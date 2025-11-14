@@ -32,7 +32,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -50,6 +50,7 @@ const Index = () => {
             <a href="#problem" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Problem</a>
             <a href="#requirements" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Requirements</a>
             <a href="#solution" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Solution</a>
+            <a href="/team" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Team</a>
           </div>
         </div>
       </nav>
@@ -119,10 +120,73 @@ const Index = () => {
           <div className="w-6 h-10 border-2 border-primary-foreground/50 rounded-full flex justify-center pt-2">
             <div className="w-1 h-2 bg-primary-foreground/70 rounded-full" />
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* Overview Section */}
+        {/* Bus Animation Section */}
+        <section className="relative py-20 bg-gradient-to-b from-muted/20 to-background overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(200,95%,45%,0.05),transparent_50%)]" />
+          <div className="container mx-auto px-4 relative z-10">
+            <div data-animate className="text-center mb-12 opacity-0">
+              <Badge className="mb-4">Live Tracking</Badge>
+              <h2 className="text-4xl font-bold mb-6 text-foreground">Real-Time Bus Movement</h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Watch our smart shuttles navigate campus routes in real-time with precision GPS tracking
+              </p>
+            </div>
+            
+            {/* Animated Bus Container */}
+            <div className="relative h-64 bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10 rounded-3xl border-2 border-primary/20 overflow-hidden">
+              {/* Road background */}
+              <div className="absolute inset-0 bg-gradient-to-b from-muted/20 to-muted/40" />
+              
+              {/* Road center line */}
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full h-0.5 border-t-2 border-dashed border-primary/40 relative">
+                  <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-transparent via-primary/30 to-transparent animate-bus-move" />
+                </div>
+              </div>
+              
+              {/* Moving Bus */}
+              <div className="absolute bottom-12 left-0 animate-bus-move animate-bus-bounce">
+                <div className="relative">
+                  {/* Bus body */}
+                  <div className="w-32 h-20 bg-gradient-to-br from-primary via-primary/90 to-secondary rounded-lg shadow-2xl border-2 border-primary/50 relative">
+                    {/* Bus windows */}
+                    <div className="absolute top-2 left-2 w-8 h-6 bg-background/80 rounded border border-primary/30" />
+                    <div className="absolute top-2 left-12 w-8 h-6 bg-background/80 rounded border border-primary/30" />
+                    <div className="absolute top-2 left-[88px] w-8 h-6 bg-background/80 rounded border border-primary/30" />
+                    {/* Bus door */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-8 bg-secondary/50 rounded-t border border-secondary/50" />
+                    {/* EcoRoute logo */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-background/90 flex items-center justify-center">
+                      <Leaf className="w-4 h-4 text-primary" />
+                    </div>
+                  </div>
+                  {/* Bus wheels */}
+                  <div className="absolute -bottom-2 left-4 w-6 h-6 bg-foreground rounded-full border-2 border-primary/50" />
+                  <div className="absolute -bottom-2 right-4 w-6 h-6 bg-foreground rounded-full border-2 border-primary/50" />
+                </div>
+              </div>
+              
+              {/* GPS indicator */}
+              <div className="absolute top-4 right-4 bg-background/90 backdrop-blur-sm rounded-lg px-4 py-2 border border-primary/20 shadow-lg">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                  <span className="text-xs font-semibold text-foreground">GPS Active</span>
+                </div>
+              </div>
+            </div>
+            
+            <div data-animate className="mt-8 text-center opacity-0">
+              <p className="text-sm text-muted-foreground">
+                Our shuttles are equipped with advanced GPS tracking technology for accurate real-time location updates
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Overview Section */}
       <section id="overview" className="py-20 bg-card relative overflow-hidden">
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
@@ -699,57 +763,58 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 bg-card border-t">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8 mb-8">
-              <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-                    <Leaf className="w-6 h-6 text-primary-foreground" />
+        {/* Footer */}
+        <footer className="py-12 bg-gradient-to-br from-card to-muted/30 border-t border-border">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <div className="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                      <Leaf className="w-6 h-6 text-primary-foreground" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-foreground">EcoRoute</h3>
+                      <p className="text-xs text-muted-foreground">Smart Campus Solutions</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-lg font-bold text-foreground">EcoRoute</h3>
-                    <p className="text-xs text-muted-foreground">Smart Campus Solutions</p>
-                  </div>
+                  <p className="text-sm text-foreground">
+                    Pioneering sustainable and efficient transportation solutions for modern campuses.
+                  </p>
                 </div>
-                <p className="text-sm text-muted-foreground">
-                  Pioneering sustainable and efficient transportation solutions for modern campuses.
+                
+                <div>
+                  <h4 className="font-semibold text-foreground mb-4">Quick Links</h4>
+                  <ul className="space-y-2 text-sm text-foreground">
+                    <li><a href="#overview" className="hover:text-primary transition-colors">Overview</a></li>
+                    <li><a href="#problem" className="hover:text-primary transition-colors">Problem Statement</a></li>
+                    <li><a href="#requirements" className="hover:text-primary transition-colors">Requirements</a></li>
+                    <li><a href="#solution" className="hover:text-primary transition-colors">Solution</a></li>
+                    <li><a href="/team" className="hover:text-primary transition-colors">Team</a></li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h4 className="font-semibold text-foreground mb-4">Contact</h4>
+                  <ul className="space-y-2 text-sm text-foreground">
+                    <li>info@ecoroute.edu</li>
+                    <li>+1 (555) 123-4567</li>
+                    <li>Campus Innovation Center</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div className="pt-8 border-t border-border text-center">
+                <p className="text-foreground text-sm">
+                  Smart Campus Shuttle Tracking System - Requirement Analysis Case Study
+                </p>
+                <p className="text-foreground text-sm mt-2">
+                  © 2024 EcoRoute. All Rights Reserved. | Presented by the EcoRoute Team
                 </p>
               </div>
-              
-              <div>
-                <h4 className="font-semibold text-foreground mb-4">Quick Links</h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li><a href="#overview" className="hover:text-primary transition-colors">Overview</a></li>
-                  <li><a href="#problem" className="hover:text-primary transition-colors">Problem Statement</a></li>
-                  <li><a href="#requirements" className="hover:text-primary transition-colors">Requirements</a></li>
-                  <li><a href="#solution" className="hover:text-primary transition-colors">Solution</a></li>
-                </ul>
-              </div>
-              
-              <div>
-                <h4 className="font-semibold text-foreground mb-4">Contact</h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>info@ecoroute.edu</li>
-                  <li>+1 (555) 123-4567</li>
-                  <li>Campus Innovation Center</li>
-                </ul>
-              </div>
-            </div>
-            
-            <div className="pt-8 border-t text-center">
-              <p className="text-muted-foreground text-sm">
-                Smart Campus Shuttle Tracking System - Requirement Analysis Case Study
-              </p>
-              <p className="text-muted-foreground text-sm mt-2">
-                © 2024 EcoRoute. All Rights Reserved. | Presented by the EcoRoute Team
-              </p>
             </div>
           </div>
-        </div>
-      </footer>
+        </footer>
     </div>
   );
 };

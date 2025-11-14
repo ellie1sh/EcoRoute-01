@@ -111,3 +111,38 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  /* Bus Animation */
+  @keyframes bus-move {
+    0% {
+      transform: translateX(-100px);
+    }
+    100% {
+      transform: translateX(calc(100vw + 100px));
+    }
+  }
+
+  @keyframes bus-bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+
+  .animate-bus-move {
+    animation: bus-move 15s linear infinite;
+  }
+
+  .animate-bus-bounce {
+    animation: bus-bounce 2s ease-in-out infinite;
+  }
+
+  /* Scroll snap utilities */
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+}
