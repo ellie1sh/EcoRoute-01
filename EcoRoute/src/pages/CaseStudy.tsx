@@ -1,15 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Leaf, Users, MapPin, BarChart3, Smartphone, Database, Radio, Monitor, ArrowLeft } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Leaf, Users, MapPin, BarChart3, Smartphone, Database, Radio, Monitor, ArrowLeft, Mail, Menu, Home, FileText } from "lucide-react";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import { Link, useNavigate } from "react-router-dom";
 import heroImage from "@/assets/hero-campus-shuttle.jpg";
 import mobileAppImage from "@/assets/mobile-app-mockup.jpg";
 import dashboardImage from "@/assets/dashboard-analytics.jpg";
 import gpsHardwareImage from "@/assets/gps-hardware.jpg";
 
 const CaseStudy = () => {
+  const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -29,18 +33,109 @@ const CaseStudy = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Fixed Navigation */}
-      <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50">
+      <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-lg border-b border-border z-50 shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <Leaf className="h-6 w-6 text-primary" />
-            <span className="text-xl font-bold">EcoRoute</span>
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center animate-pulse-glow">
+              <Leaf className="w-6 h-6 text-primary-foreground" />
+            </div>
+            <div>
+              <h1 className="text-xl font-bold text-foreground">EcoRoute</h1>
+              <p className="text-xs text-muted-foreground">Smart Campus Solutions</p>
+            </div>
           </Link>
-          <Link to="/">
-            <Button variant="outline" size="sm">
-              <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Home
+          
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-4">
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate('/')}
+              className="text-sm font-medium text-muted-foreground hover:text-primary"
+            >
+              Home
             </Button>
-          </Link>
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate('/team')}
+              className="text-sm font-medium text-muted-foreground hover:text-primary"
+            >
+              Team
+            </Button>
+            <Button variant="default" size="sm">
+              Case Study
+            </Button>
+          </div>
+
+          {/* Mobile Hamburger Menu */}
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <SheetTrigger asChild className="md:hidden">
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <SheetHeader>
+                <SheetTitle className="flex items-center gap-2">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                    <Leaf className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-lg font-bold">EcoRoute</div>
+                    <div className="text-xs text-muted-foreground font-normal">Smart Campus Solutions</div>
+                  </div>
+                </SheetTitle>
+              </SheetHeader>
+              <div className="flex flex-col gap-4 mt-8">
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    navigate('/');
+                  }}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors group text-left"
+                >
+                  <Home className="w-5 h-5 text-primary" />
+                  <span className="text-base font-medium group-hover:text-primary transition-colors">Home</span>
+                </button>
+                <button
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary/10 border-l-4 border-primary text-left"
+                >
+                  <FileText className="w-5 h-5 text-primary" />
+                  <span className="text-base font-medium text-primary">Case Study</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    navigate('/team');
+                  }}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors group text-left"
+                >
+                  <Users className="w-5 h-5 text-primary" />
+                  <span className="text-base font-medium group-hover:text-primary transition-colors">Team</span>
+                </button>
+                
+                <div className="border-t pt-4 mt-4">
+                  <div className="px-4 py-3 bg-muted/30 rounded-lg">
+                    <p className="text-xs text-muted-foreground mb-1">Quick Stats</p>
+                    <div className="space-y-2 mt-2">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs">Wait Time Reduction</span>
+                        <span className="text-sm font-bold text-primary">40%</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs">Fuel Savings</span>
+                        <span className="text-sm font-bold text-primary">25%</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs">Uptime</span>
+                        <span className="text-sm font-bold text-primary">99.9%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </nav>
 
@@ -562,35 +657,76 @@ const CaseStudy = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-muted/50 border-t border-border py-12">
+      <footer className="py-12 bg-muted/30 border-t border-border">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <Leaf className="h-6 w-6 text-primary" />
-                <span className="text-xl font-bold">EcoRoute</span>
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-8 mb-8">
+              <div>
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                    <Leaf className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-foreground">EcoRoute</h3>
+                    <p className="text-xs text-muted-foreground">Smart Campus Solutions</p>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Pioneering sustainable and efficient transportation solutions for modern campuses.
+                </p>
               </div>
-              <p className="text-sm text-muted-foreground">
-                Revolutionizing campus transportation through smart tracking technology.
+              
+              <div>
+                <h4 className="font-semibold text-foreground mb-4">Quick Links</h4>
+                <ul className="space-y-2 text-sm">
+                  <li>
+                    <button 
+                      onClick={() => navigate('/')} 
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      Home
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => navigate('/case-study')} 
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      Case Study
+                    </button>
+                  </li>
+                  <li>
+                    <button 
+                      onClick={() => navigate('/team')} 
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      Team
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              
+              <div>
+                <h4 className="font-semibold text-foreground mb-4">Contact</h4>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <Mail className="w-4 h-4" />
+                    info@ecoroute.edu
+                  </li>
+                  <li>+1 (555) 123-4567</li>
+                  <li>Campus Innovation Center</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="pt-8 border-t border-border text-center">
+              <p className="text-muted-foreground text-sm">
+                Smart Campus Shuttle Tracking System - Requirement Analysis Case Study
+              </p>
+              <p className="text-muted-foreground text-sm mt-2">
+                © 2024 EcoRoute. All Rights Reserved. | Presented by the EcoRoute Team
               </p>
             </div>
-            <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-sm">
-                <li><Link to="/" className="text-muted-foreground hover:text-primary transition-colors">Home</Link></li>
-                <li><Link to="/case-study" className="text-muted-foreground hover:text-primary transition-colors">Case Study</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <p className="text-sm text-muted-foreground">
-                For inquiries about this case study:<br />
-                ecoroute@campus.edu
-              </p>
-            </div>
-          </div>
-          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2025 EcoRoute. Case Study Project.</p>
           </div>
         </div>
       </footer>
