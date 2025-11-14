@@ -3,23 +3,472 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smart Campus Shuttle Tracking System - Case Study</title>
-    <meta name="description" content="A comprehensive requirement analysis case study for a Smart Campus Shuttle Tracking System featuring real-time GPS tracking, intelligent routing, and data-driven optimization." />
-    <meta name="author" content="Campus Transit Solutions" />
-    <meta name="keywords" content="smart campus, shuttle tracking, GPS, real-time tracking, campus transportation, requirement analysis, case study" />
-
-    <meta property="og:title" content="Smart Campus Shuttle Tracking System - Case Study" />
-    <meta property="og:description" content="Explore our comprehensive requirement analysis for modernizing campus transportation through real-time tracking and intelligent routing." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <title>EcoRoute | Smart Campus Shuttle Tracking</title>
+    <meta name="description" content="EcoRoute modernizes campus mobility with real-time shuttle tracking, eco-friendly routing, and reliable rider experiences." />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      :root {
+        --eco-green: #1aa37a;
+        --eco-dark: #0a2540;
+        --eco-light: #f4fbf8;
+      }
+      body {
+        font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+        background-color: var(--eco-light);
+        color: #1f2933;
+        scroll-behavior: smooth;
+      }
+      .preloader {
+        position: fixed;
+        inset: 0;
+        background: var(--eco-dark);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1055;
+        transition: opacity 0.4s ease, visibility 0.4s ease;
+      }
+      .preloader.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .loader-logo {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        border: 6px solid rgba(255, 255, 255, 0.15);
+        border-top-color: var(--eco-green);
+        animation: spin 1s linear infinite;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .loader-logo span {
+        font-size: 1.35rem;
+        letter-spacing: 1px;
+        font-weight: 600;
+        color: white;
+      }
+      .loader-logo::after {
+        content: "";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--eco-green);
+        top: 12px;
+        right: 12px;
+        box-shadow: 0 0 18px rgba(26, 163, 122, 0.85);
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      header {
+        background: linear-gradient(135deg, var(--eco-dark), #093358);
+        color: #fff;
+      }
+      .hero {
+        min-height: 95vh;
+        padding-top: 5rem;
+        padding-bottom: 4rem;
+      }
+      .hero h1 {
+        font-size: clamp(2.5rem, 4vw, 4rem);
+        line-height: 1.1;
+      }
+      .hero p.lead {
+        font-size: 1.15rem;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .floating-card {
+        border-radius: 1.5rem;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(12px);
+        padding: 2rem;
+        box-shadow: 0 15px 45px rgba(5, 16, 31, 0.35);
+      }
+      .section-title {
+        font-weight: 700;
+        color: var(--eco-dark);
+      }
+      .feature-icon {
+        width: 58px;
+        height: 58px;
+        border-radius: 16px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        color: #fff;
+        background: var(--eco-green);
+        box-shadow: 0 10px 25px rgba(26, 163, 122, 0.4);
+      }
+      .stat-card {
+        border: none;
+        border-radius: 24px;
+        padding: 1.75rem;
+        box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
+        background-color: #fff;
+        height: 100%;
+      }
+      .testimonial {
+        background: #fff;
+        border-radius: 24px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 60px rgba(15, 23, 42, 0.12);
+      }
+      .timeline-line {
+        border-left: 3px solid rgba(10, 37, 64, 0.15);
+        padding-left: 1.5rem;
+      }
+      .timeline-dot {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--eco-green);
+        border: 5px solid rgba(26, 163, 122, 0.2);
+        position: relative;
+        top: 0.35rem;
+        margin-left: -2.1rem;
+      }
+      footer {
+        background: #06182b;
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .nav-link {
+        color: rgba(255, 255, 255, 0.8) !important;
+        font-weight: 500;
+      }
+      .nav-link:hover {
+        color: #fff !important;
+      }
+      .btn-eco {
+        background: var(--eco-green);
+        color: #fff;
+        border: none;
+        border-radius: 999px;
+        padding-inline: 1.75rem;
+        box-shadow: 0 15px 35px rgba(26, 163, 122, 0.35);
+      }
+      .btn-eco:hover {
+        background: #14825f;
+        color: #fff;
+      }
+      @media (max-width: 767px) {
+        .floating-card {
+          margin-top: 2rem;
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="preloader" id="preloader" aria-live="polite">
+      <div class="loader-logo">
+        <span>EcoRoute</span>
+      </div>
+    </div>
+
+    <header class="hero position-relative overflow-hidden">
+      <nav class="navbar navbar-expand-lg navbar-dark container">
+        <a class="navbar-brand fw-semibold" href="#">EcoRoute</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto gap-lg-4">
+            <li class="nav-item"><a class="nav-link" href="#mission">Mission</a></li>
+            <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#impact">Impact</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container pt-5">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <p class="badge bg-success-subtle text-success rounded-pill px-3 py-2 mb-3">Campus Mobility Reinvented</p>
+            <h1 class="fw-bold">Smart Shuttle Tracking with Eco-Friendly Insight</h1>
+            <p class="lead my-4">
+              EcoRoute keeps students informed, transit teams confident, and campuses sustainable with real-time tracking, predictive routing, and rider-first digital experiences.
+            </p>
+            <div class="d-flex gap-3 flex-wrap">
+              <a class="btn btn-eco btn-lg" href="#contact">Book a Demo</a>
+              <a class="btn btn-outline-light btn-lg rounded-pill" href="#features">See How It Works</a>
+            </div>
+          </div>
+          <div class="col-lg-5 offset-lg-1">
+            <div class="floating-card text-white">
+              <small class="text-uppercase text-white-50">Live Command Snapshot</small>
+              <div class="d-flex justify-content-between align-items-center mt-3 mb-2">
+                <span>Shuttles Online</span>
+                <span class="fs-4 fw-semibold">18</span>
+              </div>
+              <div class="progress mb-4" style="height: 0.4rem">
+                <div class="progress-bar bg-success" style="width: 82%"></div>
+              </div>
+              <div class="row g-3">
+                <div class="col-6">
+                  <div class="bg-white bg-opacity-10 rounded-4 p-3">
+                    <p class="text-white-50 mb-1">Avg. Wait Time</p>
+                    <p class="fs-4 fw-semibold mb-0">4.8 min</p>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="bg-white bg-opacity-10 rounded-4 p-3">
+                    <p class="text-white-50 mb-1">CO₂ Saved</p>
+                    <p class="fs-4 fw-semibold mb-0">3.4 tons</p>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="bg-white bg-opacity-10 rounded-4 p-3">
+                    <p class="text-white-50 mb-1">Next Arrivals</p>
+                    <ul class="list-unstyled mb-0">
+                      <li>North Loop · 2 min</li>
+                      <li>Science Quad · 5 min</li>
+                      <li>Residence Hub · 7 min</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="mission" class="py-5">
+        <div class="container">
+          <div class="row align-items-center g-5">
+            <div class="col-lg-5">
+              <img
+                src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80"
+                class="img-fluid rounded-4 shadow-lg"
+                alt="Students boarding a shuttle"
+              />
+            </div>
+            <div class="col-lg-7">
+              <p class="text-uppercase text-muted fw-semibold mb-2">Our Mission</p>
+              <h2 class="section-title mb-4">Keep Every Rider Confident and Every Route Efficient</h2>
+              <p class="fs-5 mb-4">
+                EcoRoute digitizes the entire shuttle experience—from dispatch to rider notifications—so campuses eliminate guesswork, reduce emissions, and keep everyone on schedule.
+              </p>
+              <div class="row gy-4">
+                <div class="col-md-6">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="feature-icon">⏱</div>
+                    <div>
+                      <h5>Reliable ETAs</h5>
+                      <p class="mb-0">Real-time GPS plus machine learning gives accurate arrival times for every stop.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="d-flex align-items-start gap-3">
+                    <div class="feature-icon">🌿</div>
+                    <div>
+                      <h5>Greener Routes</h5>
+                      <p class="mb-0">Dynamic routing reduces idle time, cuts carbon output, and extends fleet life.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="py-5 bg-white">
+        <div class="container">
+          <div class="text-center mb-5">
+            <p class="text-uppercase text-muted fw-semibold mb-2">Platform Highlights</p>
+            <h2 class="section-title">Built for Riders, Dispatchers, and Sustainability Leads</h2>
+            <p class="text-muted">
+              A single dashboard powers operations while intuitive mobile views keep students and staff informed everywhere.
+            </p>
+          </div>
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="stat-card h-100">
+                <div class="feature-icon mb-3">📡</div>
+                <h5>Live Fleet Map</h5>
+                <p>Track every shuttle with second-by-second accuracy, route overlays, and driver health indicators.</p>
+                <ul class="list-unstyled mb-0 text-muted">
+                  <li>• Geo-fenced alerts</li>
+                  <li>• Smart traffic rerouting</li>
+                  <li>• Offline caching</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stat-card h-100">
+                <div class="feature-icon mb-3">📱</div>
+                <h5>Rider Experience</h5>
+                <p>Mobile-friendly UI with stop favorites, push notifications, and ADA-compliant visuals.</p>
+                <ul class="list-unstyled mb-0 text-muted">
+                  <li>• Seamless QR boarding</li>
+                  <li>• Outage messaging</li>
+                  <li>• Confidence scores</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="stat-card h-100">
+                <div class="feature-icon mb-3">📊</div>
+                <h5>Operations Intelligence</h5>
+                <p>Understand peak demand, optimize coverage, and report sustainability savings in one glance.</p>
+                <ul class="list-unstyled mb-0 text-muted">
+                  <li>• Predictive ridership</li>
+                  <li>• Energy benchmarks</li>
+                  <li>• Executive-ready exports</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="impact" class="py-5">
+        <div class="container">
+          <div class="row g-4">
+            <div class="col-lg-7">
+              <div class="timeline-line">
+                <div class="timeline-dot"></div>
+                <p class="text-uppercase text-muted fw-semibold mb-1">Rollout Roadmap</p>
+                <h3 class="section-title mb-4">From Pilot to Campus-Wide Confidence</h3>
+                <div class="mb-4">
+                  <h5>Week 1 · System Blueprint</h5>
+                  <p class="mb-0 text-muted">Audit fleet hardware, map routes, and tailor notification templates for your campus voice.</p>
+                </div>
+                <div class="mb-4">
+                  <h5>Weeks 2-3 · Hybrid Launch</h5>
+                  <p class="mb-0 text-muted">Run the new command dashboard alongside legacy processes to ensure zero service disruption.</p>
+                </div>
+                <div class="mb-4">
+                  <h5>Week 4 · Experience Go-Live</h5>
+                  <p class="mb-0 text-muted">Promote the rider app, deploy QR stop signage, and enable automated service alerts.</p>
+                </div>
+                <div>
+                  <h5>Ongoing · Optimization Loops</h5>
+                  <p class="mb-0 text-muted">Monthly route tuning, sustainability reporting, and student feedback workshops.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="testimonial">
+                <p class="text-uppercase text-muted fw-semibold mb-2">What campuses say</p>
+                <p class="fs-4 fw-medium">
+                  “EcoRoute turned shuttle visibility from a daily complaint into a competitive advantage. Wait times dropped 37% within the first semester.”
+                </p>
+                <div class="d-flex align-items-center mt-4">
+                  <img
+                    src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=150&q=80"
+                    alt="Operations Director"
+                    class="rounded-circle me-3"
+                    width="56"
+                    height="56"
+                  />
+                  <div>
+                    <h6 class="mb-0">Jamie Patel</h6>
+                    <small class="text-muted">Director of Campus Mobility, Westview University</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="py-5 bg-white">
+        <div class="container">
+          <div class="row g-5 align-items-center">
+            <div class="col-lg-6">
+              <h2 class="section-title mb-3">Ready to modernize your campus fleet?</h2>
+              <p class="text-muted mb-4">
+                Share a few details and our transit specialists will send a personalized rollout plan within 48 hours.
+              </p>
+              <ul class="list-unstyled text-muted">
+                <li>• Deployment playbook tailored to your campus</li>
+                <li>• Hardware compatibility assessment</li>
+                <li>• Sustainability savings projections</li>
+              </ul>
+            </div>
+            <div class="col-lg-6">
+              <form class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Full Name</label>
+                  <input type="text" class="form-control form-control-lg" placeholder="Alex Lee" required />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Campus / Organization</label>
+                  <input type="text" class="form-control form-control-lg" placeholder="North Ridge University" required />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-control form-control-lg" placeholder="mobility@nr.edu" required />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Fleet Size</label>
+                  <select class="form-select form-select-lg" required>
+                    <option value="">Choose...</option>
+                    <option>1 - 5 vehicles</option>
+                    <option>6 - 15 vehicles</option>
+                    <option>16 - 40 vehicles</option>
+                    <option>40+ vehicles</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Key goals</label>
+                  <textarea class="form-control form-control-lg" rows="3" placeholder="Shorter waits, data visibility, sustainability..." required></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-eco btn-lg w-100">Send Request</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-4">
+      <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <p class="mb-0">&copy; <span id="year"></span> EcoRoute Mobility. All rights reserved.</p>
+        <div class="d-flex gap-3">
+          <a class="text-decoration-none text-white-50" href="#mission">Mission</a>
+          <a class="text-decoration-none text-white-50" href="#features">Features</a>
+          <a class="text-decoration-none text-white-50" href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const preloader = document.getElementById("preloader");
+      const yearEl = document.getElementById("year");
+
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          preloader.classList.add("hidden");
+          document.body.style.overflow = "auto";
+        }, 900);
+      });
+
+      yearEl.textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
