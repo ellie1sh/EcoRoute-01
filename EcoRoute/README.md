@@ -1,73 +1,123 @@
-# Welcome to your Lovable project
+# EcoRoute - Smart Campus Shuttle Tracking System
 
-## Project info
+## About This Project
 
-**URL**: https://lovable.dev/projects/228d751a-8fce-41f4-8529-4feaf2f5c8fc
+EcoRoute is a comprehensive requirement analysis case study for a Smart Campus Shuttle Tracking System. This project demonstrates how modern technology can revolutionize campus transportation through real-time GPS tracking, intelligent route optimization, and data-driven decision making.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- **Real-Time Tracking**: Live GPS tracking with 30-second update intervals
+- **Smart ETA Predictions**: AI-powered arrival time calculations
+- **Mobile Experience**: Intuitive interface for students and faculty
+- **Admin Dashboard**: Comprehensive fleet management and analytics
+- **Route Optimization**: Data-driven route planning for efficiency
+- **Push Notifications**: Instant alerts for arrivals and delays
 
-**Use Lovable**
+## Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/228d751a-8fce-41f4-8529-4feaf2f5c8fc) and start prompting.
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- Bootstrap 5.3.2
+- Bootstrap Icons
 
-Changes made via Lovable will be committed automatically to this repo.
+## Project Structure
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+EcoRoute/
+├── index.html          # Main HTML file
+├── styles.css          # Custom styles and animations
+├── main.js            # JavaScript functionality
+├── src/
+│   └── assets/        # Images and media files
+└── public/            # Public assets
 ```
 
-**Edit a file directly in GitHub**
+## Getting Started
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Simply open `index.html` in a modern web browser to view the case study.
 
-**Use GitHub Codespaces**
+### Local Development
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Open `index.html` in your browser
+2. No build process or dependencies required!
 
-## What technologies are used for this project?
+For local server (optional):
+```bash
+# Using Python 3
+python -m http.server 8000
 
-This project is built with:
+# Using PHP
+php -S localhost:8000
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Using Node.js (with http-server)
+npx http-server
+```
 
-## How can I deploy this project?
+Then visit `http://localhost:8000` in your browser.
 
-Simply open [Lovable](https://lovable.dev/projects/228d751a-8fce-41f4-8529-4feaf2f5c8fc) and click on Share -> Publish.
+## Key Highlights
 
-## Can I connect a custom domain to my Lovable project?
+### Benefits for Users
+- 40% reduction in average wait time
+- Improved trip planning capabilities
+- Enhanced accessibility features
+- Real-time communication
 
-Yes, you can!
+### Benefits for Administration
+- 25% reduction in fuel costs
+- Real-time fleet monitoring
+- Predictive maintenance
+- Data-driven strategic planning
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## System Requirements
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- **Performance**: 99.9% uptime during operational hours
+- **Scalability**: Support for 10,000+ concurrent users
+- **Response Time**: Location updates within 2 seconds
+- **Security**: Encrypted data transmission, GDPR compliant
+
+## Case Study Sections
+
+1. **Overview** - Project introduction and target users
+2. **Problem Statement** - Current challenges in campus transportation
+3. **Requirements Analysis** - Functional and non-functional requirements
+4. **Proposed Solution** - System architecture and components
+5. **Benefits & Impact** - Expected outcomes and measurable improvements
+6. **Conclusion** - Summary and future considerations
+
+## Browser Support
+
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
+- Opera
+
+## Features Showcase
+
+### Intro Animation
+- Smooth logo animation on page load
+- Professional loading experience
+- Automatic transition to main content
+
+### Scroll Animations
+- Elements fade in as you scroll
+- Smooth transitions throughout
+- Fixed navigation with active state highlighting
+
+### Interactive Elements
+- Hover effects on cards
+- Parallax scrolling on hero section
+- Animated statistics counters
+- Scroll-to-top button
+
+## Credits
+
+**Project**: Smart Campus Shuttle Tracking System  
+**Type**: Requirement Analysis Case Study  
+**Year**: 2024
+
+---
+
+© 2024 EcoRoute - Smart Campus Solutions. All Rights Reserved.
