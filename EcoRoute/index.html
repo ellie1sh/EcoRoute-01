@@ -1,25 +1,659 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Smart Campus Shuttle Tracking System - Case Study</title>
-    <meta name="description" content="A comprehensive requirement analysis case study for a Smart Campus Shuttle Tracking System featuring real-time GPS tracking, intelligent routing, and data-driven optimization." />
-    <meta name="author" content="Campus Transit Solutions" />
-    <meta name="keywords" content="smart campus, shuttle tracking, GPS, real-time tracking, campus transportation, requirement analysis, case study" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoRoute - Smart Campus Shuttle Tracking System</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Intro Animation -->
+    <div id="intro-screen" class="intro-screen">
+        <div class="intro-content">
+            <div class="logo-animation">
+                <div class="logo-circle">
+                    <i class="bi bi-geo-alt-fill"></i>
+                </div>
+                <h1 class="intro-title">EcoRoute</h1>
+                <p class="intro-subtitle">Smart Campus Solutions</p>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
 
-    <meta property="og:title" content="Smart Campus Shuttle Tracking System - Case Study" />
-    <meta property="og:description" content="Explore our comprehensive requirement analysis for modernizing campus transportation through real-time tracking and intelligent routing." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <!-- Main Content -->
+    <div id="main-content" class="main-content">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top glass-nav">
+            <div class="container">
+                <a class="navbar-brand" href="#home">
+                    <div class="d-flex align-items-center">
+                        <div class="logo-icon">
+                            <i class="bi bi-geo-alt-fill"></i>
+                        </div>
+                        <div class="ms-2">
+                            <div class="brand-title">EcoRoute</div>
+                            <div class="brand-subtitle">Smart Campus Solutions</div>
+                        </div>
+                    </div>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#overview">Overview</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#problem">Challenge</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#requirements">Requirements</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#solution">Solution</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#benefits">Impact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="hero-overlay"></div>
+            <img src="src/assets/hero-campus-shuttle.jpg" alt="Campus Shuttle" class="hero-image">
+            <div class="container hero-content">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-10">
+                        <span class="badge custom-badge mb-3 fade-in">Requirement Analysis Case Study</span>
+                        <h1 class="hero-title fade-in-up">
+                            Smart Campus Shuttle
+                            <br>
+                            <span class="gradient-text">Tracking System</span>
+                        </h1>
+                        <p class="hero-subtitle fade-in-up delay-1">
+                            Revolutionizing campus transportation through real-time GPS tracking, intelligent route optimization, and data-driven decision making for a sustainable future
+                        </p>
+                        <div class="hero-buttons fade-in-up delay-2">
+                            <a href="#overview" class="btn btn-primary btn-lg me-3">Explore Case Study</a>
+                            <a href="#solution" class="btn btn-outline-light btn-lg">View Solution</a>
+                        </div>
+                        <div class="row justify-content-center mt-5 fade-in-up delay-3">
+                            <div class="col-md-3 col-6 mb-3">
+                                <div class="stat-card">
+                                    <div class="stat-number">40%</div>
+                                    <div class="stat-label">Less Wait Time</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6 mb-3">
+                                <div class="stat-card">
+                                    <div class="stat-number">25%</div>
+                                    <div class="stat-label">Fuel Savings</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-6 mb-3">
+                                <div class="stat-card">
+                                    <div class="stat-number">99.9%</div>
+                                    <div class="stat-label">System Uptime</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse"></div>
+            </div>
+        </section>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+        <!-- Overview Section -->
+        <section id="overview" class="section-padding bg-light">
+            <div class="container">
+                <div class="text-center mb-5 animate-on-scroll">
+                    <span class="badge bg-primary mb-3">Project Overview</span>
+                    <h2 class="section-title">Revolutionizing Campus Transportation</h2>
+                    <p class="section-subtitle">A comprehensive system designed to transform how students, faculty, and staff interact with campus transportation services</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4 animate-on-scroll">
+                        <div class="feature-card">
+                            <div class="feature-icon bg-primary">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <h3 class="feature-title">Target Users</h3>
+                            <p class="feature-text">Serving students, faculty, staff, and campus administrators with intuitive real-time tracking tools</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 animate-on-scroll delay-1">
+                        <div class="feature-card">
+                            <div class="feature-icon bg-success">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                            <h3 class="feature-title">Campus-Wide Scope</h3>
+                            <p class="feature-text">Complete fleet management with GPS tracking and intelligent route optimization across the entire campus</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 animate-on-scroll delay-2">
+                        <div class="feature-card">
+                            <div class="feature-icon bg-warning">
+                                <i class="bi bi-lightning-charge-fill"></i>
+                            </div>
+                            <h3 class="feature-title">Measurable Impact</h3>
+                            <p class="feature-text">Improved efficiency, reduced wait times, enhanced sustainability, and superior user experience</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mobile App Showcase -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 animate-on-scroll">
+                        <span class="badge bg-primary mb-3">Mobile Experience</span>
+                        <h2 class="display-5 fw-bold mb-4">Track Your Ride in Real-Time</h2>
+                        <p class="lead text-muted mb-4">
+                            Our intuitive mobile application delivers real-time shuttle tracking at your fingertips with accurate predictions and instant notifications.
+                        </p>
+                        <ul class="feature-list">
+                            <li>
+                                <i class="bi bi-check-circle-fill text-primary"></i>
+                                <div>
+                                    <strong>Live Location Updates</strong>
+                                    <p class="text-muted">30-second refresh intervals for pinpoint accuracy</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="bi bi-check-circle-fill text-primary"></i>
+                                <div>
+                                    <strong>Smart ETA Predictions</strong>
+                                    <p class="text-muted">AI-powered arrival time calculations based on traffic patterns</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="bi bi-check-circle-fill text-primary"></i>
+                                <div>
+                                    <strong>Push Notifications</strong>
+                                    <p class="text-muted">Instant alerts for arrivals, delays, and route changes</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="bi bi-check-circle-fill text-primary"></i>
+                                <div>
+                                    <strong>Offline Route Viewing</strong>
+                                    <p class="text-muted">Access route maps even without internet connection</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 animate-on-scroll delay-1">
+                        <div class="image-wrapper">
+                            <img src="src/assets/mobile-app-mockup.jpg" alt="Mobile App" class="img-fluid rounded shadow-lg hover-zoom">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem Statement -->
+        <section id="problem" class="section-padding bg-danger-subtle">
+            <div class="container">
+                <div class="text-center mb-5 animate-on-scroll">
+                    <span class="badge bg-danger mb-3">Current Challenges</span>
+                    <h2 class="section-title">Problem Statement</h2>
+                    <p class="section-subtitle">Critical challenges facing traditional campus shuttle systems</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="problem-card animate-on-scroll">
+                            <p class="lead mb-4">
+                                Current campus shuttle systems face several critical challenges that significantly impact user satisfaction and operational efficiency:
+                            </p>
+                            <div class="problem-list">
+                                <div class="problem-item">
+                                    <div class="problem-icon">
+                                        <i class="bi bi-clock-history"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Unpredictable Wait Times</h5>
+                                        <p class="text-muted">Students have zero visibility into shuttle locations or arrival times, leading to frustration, missed classes, and wasted time</p>
+                                    </div>
+                                </div>
+                                <div class="problem-item">
+                                    <div class="problem-icon">
+                                        <i class="bi bi-signpost-2"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Inefficient Route Planning</h5>
+                                        <p class="text-muted">Fixed routes fail to adapt to changing demand patterns, campus events, or real-time conditions</p>
+                                    </div>
+                                </div>
+                                <div class="problem-item">
+                                    <div class="problem-icon">
+                                        <i class="bi bi-chat-left-dots"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Limited Communication</h5>
+                                        <p class="text-muted">No real-time updates about delays, route changes, or service disruptions leave users in the dark</p>
+                                    </div>
+                                </div>
+                                <div class="problem-item">
+                                    <div class="problem-icon">
+                                        <i class="bi bi-graph-down"></i>
+                                    </div>
+                                    <div>
+                                        <h5>Operational Blind Spots</h5>
+                                        <p class="text-muted">Administrators lack data-driven insights for fleet management, optimization, and strategic planning</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Requirements Analysis -->
+        <section id="requirements" class="section-padding">
+            <div class="container">
+                <div class="text-center mb-5 animate-on-scroll">
+                    <span class="badge bg-primary mb-3">Technical Specifications</span>
+                    <h2 class="section-title">Requirements Analysis</h2>
+                    <p class="section-subtitle">Comprehensive breakdown of system capabilities and constraints</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-6 animate-on-scroll">
+                        <div class="requirements-card">
+                            <div class="requirements-header bg-primary">
+                                <i class="bi bi-phone"></i>
+                                <h3>Functional Requirements</h3>
+                                <p>Core features and capabilities</p>
+                            </div>
+                            <ul class="requirements-list">
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-primary"></i>
+                                    <div>
+                                        <strong>Real-Time GPS Tracking</strong>
+                                        <p>Display shuttle locations with 30-second update intervals</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-primary"></i>
+                                    <div>
+                                        <strong>ETA Calculations</strong>
+                                        <p>Predict arrival times based on traffic and route conditions</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-primary"></i>
+                                    <div>
+                                        <strong>Route Visualization</strong>
+                                        <p>Interactive maps showing all routes and stops</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-primary"></i>
+                                    <div>
+                                        <strong>Push Notifications</strong>
+                                        <p>Alerts for arrivals, delays, and service changes</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-primary"></i>
+                                    <div>
+                                        <strong>Historical Data Analytics</strong>
+                                        <p>Dashboard for usage patterns and optimization</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-primary"></i>
+                                    <div>
+                                        <strong>Multi-Platform Support</strong>
+                                        <p>iOS, Android, and web applications</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 animate-on-scroll delay-1">
+                        <div class="requirements-card">
+                            <div class="requirements-header bg-success">
+                                <i class="bi bi-shield-check"></i>
+                                <h3>Non-Functional Requirements</h3>
+                                <p>Performance, security, and quality attributes</p>
+                            </div>
+                            <ul class="requirements-list">
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                    <div>
+                                        <strong>High Availability</strong>
+                                        <p>99.9% uptime during operational hours (6 AM - 11 PM)</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                    <div>
+                                        <strong>Scalability</strong>
+                                        <p>Support 10,000+ concurrent users during peak times</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                    <div>
+                                        <strong>Fast Response Time</strong>
+                                        <p>Location updates within 2 seconds, page loads under 3 seconds</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                    <div>
+                                        <strong>Data Security</strong>
+                                        <p>Encrypted transmission, GDPR compliance for user data</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                    <div>
+                                        <strong>Accessibility</strong>
+                                        <p>WCAG 2.1 Level AA compliance for all interfaces</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                    <div>
+                                        <strong>Battery Efficiency</strong>
+                                        <p>Minimal drain on mobile devices (&lt;5% per hour)</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Showcase -->
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 order-lg-2 animate-on-scroll">
+                        <span class="badge bg-primary mb-3">Admin Dashboard</span>
+                        <h2 class="display-5 fw-bold mb-4">Data-Driven Fleet Management</h2>
+                        <p class="lead text-muted mb-4">
+                            Powerful analytics and monitoring tools provide complete visibility into fleet operations for optimized decision-making.
+                        </p>
+                        <ul class="feature-list">
+                            <li>
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                                <div>
+                                    <strong>Real-Time Fleet Monitoring</strong>
+                                    <p class="text-muted">Track all shuttles simultaneously on interactive maps</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                                <div>
+                                    <strong>Usage Analytics</strong>
+                                    <p class="text-muted">Comprehensive reports on ridership patterns and demand</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                                <div>
+                                    <strong>Route Optimization</strong>
+                                    <p class="text-muted">AI-powered suggestions for improving efficiency</p>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                                <div>
+                                    <strong>Performance Metrics</strong>
+                                    <p class="text-muted">Track KPIs and service quality indicators</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 order-lg-1 animate-on-scroll delay-1">
+                        <div class="image-wrapper">
+                            <img src="src/assets/dashboard-analytics.jpg" alt="Analytics Dashboard" class="img-fluid rounded shadow-lg hover-zoom">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solution Architecture -->
+        <section id="solution" class="section-padding">
+            <div class="container">
+                <div class="text-center mb-5 animate-on-scroll">
+                    <span class="badge bg-primary mb-3">Our Approach</span>
+                    <h2 class="section-title">Proposed Solution Architecture</h2>
+                    <p class="section-subtitle">A comprehensive system designed for efficiency and scalability</p>
+                </div>
+                <div class="row g-4 mb-5">
+                    <div class="col-lg-3 col-md-6 animate-on-scroll">
+                        <div class="solution-card">
+                            <div class="solution-icon bg-primary">
+                                <i class="bi bi-phone"></i>
+                            </div>
+                            <h4>Mobile Applications</h4>
+                            <p>Native iOS and Android apps with intuitive interfaces, real-time maps, and push notifications</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 animate-on-scroll delay-1">
+                        <div class="solution-card">
+                            <div class="solution-icon bg-success">
+                                <i class="bi bi-database"></i>
+                            </div>
+                            <h4>Backend Infrastructure</h4>
+                            <p>Cloud-based microservices with real-time data processing and scalable storage</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 animate-on-scroll delay-2">
+                        <div class="solution-card">
+                            <div class="solution-icon bg-warning">
+                                <i class="bi bi-broadcast"></i>
+                            </div>
+                            <h4>GPS Tracking Units</h4>
+                            <p>Hardware devices with 4G connectivity and high-precision GPS for accurate tracking</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 animate-on-scroll delay-3">
+                        <div class="solution-card">
+                            <div class="solution-icon bg-info">
+                                <i class="bi bi-speedometer2"></i>
+                            </div>
+                            <h4>Admin Dashboard</h4>
+                            <p>Web-based portal for fleet monitoring, analytics, and route optimization</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hardware Component -->
+                <div class="row align-items-center g-5 animate-on-scroll">
+                    <div class="col-lg-6">
+                        <div class="image-wrapper">
+                            <img src="src/assets/gps-hardware.jpg" alt="GPS Hardware" class="img-fluid rounded shadow-lg hover-zoom">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <span class="badge bg-warning mb-3">Hardware Component</span>
+                        <h3 class="display-6 fw-bold mb-4">GPS Tracking Technology</h3>
+                        <p class="lead text-muted mb-4">
+                            State-of-the-art GPS hardware provides accurate, real-time location data with minimal power consumption and maximum reliability.
+                        </p>
+                        <ul class="tech-specs">
+                            <li><i class="bi bi-check2-circle text-warning"></i> High-precision GPS (±2m accuracy)</li>
+                            <li><i class="bi bi-check2-circle text-warning"></i> 4G LTE connectivity with fallback</li>
+                            <li><i class="bi bi-check2-circle text-warning"></i> Ruggedized for vehicle mounting</li>
+                            <li><i class="bi bi-check2-circle text-warning"></i> Weather-resistant enclosure</li>
+                            <li><i class="bi bi-check2-circle text-warning"></i> 24/7 continuous operation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Benefits & Impact -->
+        <section id="benefits" class="section-padding bg-light">
+            <div class="container">
+                <div class="text-center mb-5 animate-on-scroll">
+                    <span class="badge bg-primary mb-3">Expected Outcomes</span>
+                    <h2 class="section-title">Benefits & Impact</h2>
+                    <p class="section-subtitle">Measurable improvements in user experience and operational efficiency</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-6 animate-on-scroll">
+                        <div class="benefit-card">
+                            <div class="benefit-header bg-primary">
+                                <i class="bi bi-people-fill"></i>
+                                <h3>For Users</h3>
+                            </div>
+                            <ul class="benefit-list">
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-primary"></i>
+                                    <span>Reduced average wait time by <strong>40%</strong></span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-primary"></i>
+                                    <span>Improved trip planning and time management</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-primary"></i>
+                                    <span>Enhanced accessibility for students with disabilities</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-primary"></i>
+                                    <span>Increased ridership and satisfaction scores</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-primary"></i>
+                                    <span>Real-time communication and transparency</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 animate-on-scroll delay-1">
+                        <div class="benefit-card">
+                            <div class="benefit-header bg-success">
+                                <i class="bi bi-building"></i>
+                                <h3>For Administration</h3>
+                            </div>
+                            <ul class="benefit-list">
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                    <span>Route optimization reducing fuel costs by <strong>25%</strong></span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                    <span>Real-time fleet monitoring and incident response</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                    <span>Predictive maintenance reducing vehicle downtime</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                    <span>Comprehensive analytics for strategic planning</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-check-circle-fill text-success"></i>
+                                    <span>Data-driven resource allocation and optimization</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="section-padding conclusion-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10 text-center animate-on-scroll">
+                        <span class="badge custom-badge mb-4">Final Thoughts</span>
+                        <h2 class="display-4 fw-bold mb-4 text-white">Conclusion</h2>
+                        <p class="lead mb-4 text-white-50">
+                            The Smart Campus Shuttle Tracking System addresses critical pain points in campus transportation through a comprehensive, user-centered approach. By combining real-time tracking, intelligent routing, and data-driven optimization, this solution promises to transform the campus commute experience while delivering measurable operational benefits.
+                        </p>
+                        <p class="lead mb-5 text-white-50">
+                            This requirements analysis provides a solid foundation for implementation, ensuring all stakeholder needs are addressed while maintaining technical feasibility and scalability for future growth.
+                        </p>
+                        <div class="d-flex gap-3 justify-content-center">
+                            <a href="#overview" class="btn btn-light btn-lg">Learn More</a>
+                            <a href="#home" class="btn btn-outline-light btn-lg">Back to Top</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="row g-4 mb-4">
+                    <div class="col-lg-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="logo-icon">
+                                <i class="bi bi-geo-alt-fill"></i>
+                            </div>
+                            <div class="ms-2">
+                                <div class="brand-title">EcoRoute</div>
+                                <div class="brand-subtitle">Smart Campus Solutions</div>
+                            </div>
+                        </div>
+                        <p class="text-muted">
+                            Pioneering sustainable and efficient transportation solutions for modern campuses worldwide.
+                        </p>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5 class="mb-3">Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#overview" class="text-muted">Overview</a></li>
+                            <li><a href="#problem" class="text-muted">Problem Statement</a></li>
+                            <li><a href="#requirements" class="text-muted">Requirements</a></li>
+                            <li><a href="#solution" class="text-muted">Solution</a></li>
+                            <li><a href="#benefits" class="text-muted">Impact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4">
+                        <h5 class="mb-3">Contact Information</h5>
+                        <ul class="list-unstyled text-muted">
+                            <li><i class="bi bi-envelope me-2"></i> info@ecoroute.edu</li>
+                            <li><i class="bi bi-telephone me-2"></i> +1 (555) 123-4567</li>
+                            <li><i class="bi bi-building me-2"></i> Campus Innovation Center</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-top pt-4 text-center">
+                    <p class="text-muted mb-0">
+                        © 2024 EcoRoute - Smart Campus Shuttle Tracking System. All Rights Reserved.
+                    </p>
+                    <p class="text-muted small mt-2">
+                        Requirement Analysis Case Study
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="main.js"></script>
+</body>
 </html>
