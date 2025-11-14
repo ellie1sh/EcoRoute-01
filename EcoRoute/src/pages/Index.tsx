@@ -1,15 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle2, MapPin, Users, Clock, Smartphone, Database, Shield, Zap, Leaf, Navigation, TrendingUp } from "lucide-react";
+import { CheckCircle2, MapPin, Users, Clock, Smartphone, Database, Shield, Zap, Leaf, Navigation, TrendingUp, Mail, Menu, X } from "lucide-react";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import heroImage from "@/assets/hero-campus-shuttle.jpg";
 import mobileAppImage from "@/assets/mobile-app-mockup.jpg";
 import dashboardImage from "@/assets/dashboard-analytics.jpg";
 import gpsHardwareImage from "@/assets/gps-hardware.jpg";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
+  const navigate = useNavigate();
   const observerRef = useRef<IntersectionObserver | null>(null);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     // Intersection Observer for scroll animations
@@ -34,7 +38,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Navbar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center animate-pulse-glow">
@@ -45,14 +49,128 @@ const Index = () => {
               <p className="text-xs text-muted-foreground">Smart Campus Solutions</p>
             </div>
           </div>
+          
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
             <a href="#overview" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Overview</a>
             <a href="#problem" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Problem</a>
             <a href="#requirements" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Requirements</a>
             <a href="#solution" className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors">Solution</a>
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate('/team')}
+              className="text-sm font-medium text-muted-foreground hover:text-primary"
+            >
+              Team
+            </Button>
+            <Button 
+              variant="ghost" 
+              onClick={() => navigate('/case-study')}
+              className="text-sm font-medium text-muted-foreground hover:text-primary"
+            >
+              Case Study
+            </Button>
           </div>
+
+          {/* Mobile Hamburger Menu */}
+          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
+            <SheetTrigger asChild className="md:hidden">
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <SheetHeader>
+                <SheetTitle className="flex items-center gap-2">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                    <Leaf className="w-6 h-6 text-primary-foreground" />
+                  </div>
+                  <div className="text-left">
+                    <div className="text-lg font-bold">EcoRoute</div>
+                    <div className="text-xs text-muted-foreground font-normal">Smart Campus Solutions</div>
+                  </div>
+                </SheetTitle>
+              </SheetHeader>
+              <div className="flex flex-col gap-4 mt-8">
+                <a 
+                  href="#overview" 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors group"
+                >
+                  <Users className="w-5 h-5 text-primary" />
+                  <span className="text-base font-medium group-hover:text-primary transition-colors">Overview</span>
+                </a>
+                <a 
+                  href="#problem" 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors group"
+                >
+                  <Clock className="w-5 h-5 text-primary" />
+                  <span className="text-base font-medium group-hover:text-primary transition-colors">Problem</span>
+                </a>
+                <a 
+                  href="#requirements" 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors group"
+                >
+                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                  <span className="text-base font-medium group-hover:text-primary transition-colors">Requirements</span>
+                </a>
+                <a 
+                  href="#solution" 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors group"
+                >
+                  <Zap className="w-5 h-5 text-primary" />
+                  <span className="text-base font-medium group-hover:text-primary transition-colors">Solution</span>
+                </a>
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    navigate('/team');
+                  }}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors group text-left"
+                >
+                  <Users className="w-5 h-5 text-primary" />
+                  <span className="text-base font-medium group-hover:text-primary transition-colors">Team</span>
+                </button>
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    navigate('/case-study');
+                  }}
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-primary/10 transition-colors group text-left"
+                >
+                  <Database className="w-5 h-5 text-primary" />
+                  <span className="text-base font-medium group-hover:text-primary transition-colors">Case Study</span>
+                </button>
+                
+                <div className="border-t pt-4 mt-4">
+                  <Button 
+                    className="w-full" 
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      document.getElementById('overview')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    Explore Now
+                  </Button>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </nav>
+
+      {/* Moving Bus Animation */}
+      <div className="fixed bottom-0 left-0 w-full h-20 pointer-events-none z-40 overflow-hidden">
+        <div className="bus-animation">
+          <div className="flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg shadow-lg">
+            <div className="text-2xl">🚌</div>
+            <div className="text-sm font-semibold">EcoRoute in Motion</div>
+          </div>
+        </div>
+      </div>
 
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden mt-16">
@@ -700,7 +818,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-card border-t">
+      <footer className="py-12 bg-muted/30 border-t border-border">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-3 gap-8 mb-8">
@@ -721,25 +839,36 @@ const Index = () => {
               
               <div>
                 <h4 className="font-semibold text-foreground mb-4">Quick Links</h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li><a href="#overview" className="hover:text-primary transition-colors">Overview</a></li>
-                  <li><a href="#problem" className="hover:text-primary transition-colors">Problem Statement</a></li>
-                  <li><a href="#requirements" className="hover:text-primary transition-colors">Requirements</a></li>
-                  <li><a href="#solution" className="hover:text-primary transition-colors">Solution</a></li>
+                <ul className="space-y-2 text-sm">
+                  <li><a href="#overview" className="text-muted-foreground hover:text-primary transition-colors">Overview</a></li>
+                  <li><a href="#problem" className="text-muted-foreground hover:text-primary transition-colors">Problem Statement</a></li>
+                  <li><a href="#requirements" className="text-muted-foreground hover:text-primary transition-colors">Requirements</a></li>
+                  <li><a href="#solution" className="text-muted-foreground hover:text-primary transition-colors">Solution</a></li>
+                  <li>
+                    <button 
+                      onClick={() => navigate('/team')} 
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      Team
+                    </button>
+                  </li>
                 </ul>
               </div>
               
               <div>
                 <h4 className="font-semibold text-foreground mb-4">Contact</h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>info@ecoroute.edu</li>
+                  <li className="flex items-center gap-2">
+                    <Mail className="w-4 h-4" />
+                    info@ecoroute.edu
+                  </li>
                   <li>+1 (555) 123-4567</li>
                   <li>Campus Innovation Center</li>
                 </ul>
               </div>
             </div>
             
-            <div className="pt-8 border-t text-center">
+            <div className="pt-8 border-t border-border text-center">
               <p className="text-muted-foreground text-sm">
                 Smart Campus Shuttle Tracking System - Requirement Analysis Case Study
               </p>

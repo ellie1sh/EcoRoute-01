@@ -111,3 +111,153 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom animations */
+@keyframes bus-drive {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.8);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0px);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.bus-animation {
+  animation: bus-drive 25s linear infinite;
+  position: absolute;
+  bottom: 20px;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-scale-in {
+  animation: scale-in 1.5s ease-out;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Section transitions */
+section {
+  scroll-margin-top: 80px;
+  position: relative;
+}
+
+/* Improved hover effects */
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* Enhanced glass morphism */
+.glass-effect {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, hsl(200 95% 45%), hsl(185 75% 55%), hsl(280 70% 60%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Mobile menu enhancements */
+@media (max-width: 768px) {
+  .mobile-menu-item {
+    animation: slide-in-right 0.3s ease-out forwards;
+  }
+  
+  .mobile-menu-item:nth-child(1) { animation-delay: 0.1s; }
+  .mobile-menu-item:nth-child(2) { animation-delay: 0.15s; }
+  .mobile-menu-item:nth-child(3) { animation-delay: 0.2s; }
+  .mobile-menu-item:nth-child(4) { animation-delay: 0.25s; }
+  .mobile-menu-item:nth-child(5) { animation-delay: 0.3s; }
+  .mobile-menu-item:nth-child(6) { animation-delay: 0.35s; }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Hamburger menu button animation */
+.hamburger-menu-button {
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu-button:hover {
+  transform: scale(1.1);
+}
+
+.hamburger-menu-button:active {
+  transform: scale(0.95);
+}
